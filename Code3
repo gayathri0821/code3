@@ -1,0 +1,542 @@
+1. Take a input for 3 subject marks for 3 scholars for ECP-01 and 3 subject marks for 3 scholars for ECP-02 and find the subject wise average marks of ECP-01 and ECP-02.
+Hint:   Subject1: Digital_Logic
+            Subject2: Networking
+            Subject 3: JAVA
+Program:
+import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
+public class StudentMarks {
+	public static void main(String[] args) {
+		// creating tree map
+		TreeMap<String, Marks> ECP_01 = new TreeMap<String, Marks>();
+		// creating tree map
+		TreeMap<String, Marks> ECP_02 = new TreeMap<String, Marks>();
+		Scanner in = new Scanner(System.in);  //Scanner Class
+		int count = 0;
+		do {
+			// Takes inputs from the console
+			System.out.println("Enter Details of ECP_01");
+			System.out.println("Enter Scholar Name");
+			String name = in.next();
+			System.out.println("Enter Marks of 3 Subjects");
+			System.out.print("Digital_Logic  :  ");
+			int sub1Marks = in.nextInt();
+			System.out.print("Networking  :  ");
+			int sub2Marks = in.nextInt();
+			System.out.print("Java  :  ");
+			int sub3Marks = in.nextInt();
+			Marks m = new Marks("Digital Logic", "Networking", "Java", sub1Marks, sub2Marks, sub3Marks);
+			ECP_01.put(name, m);
+			System.out.println("Enter Details of ECP_02");
+			System.out.println("Enter Scholar Name");
+			String name1 = in.next();
+			System.out.println("Enter Marks of 3 Subjects");
+			System.out.print("Digital_Logic  :  ");
+			int sub1Marks1 = in.nextInt();
+			System.out.print("Networking  :  ");
+			int sub2Marks2 = in.nextInt();
+			System.out.print("Java  :  ");
+			int sub3Marks3 = in.nextInt();
+			Marks n = new Marks("Digital Logic", "Networking", "Java", sub1Marks1, sub2Marks2, sub3Marks3);
+			ECP_02.put(name1, n);
+			count++;
+		} while (count != 3);
+		int sub1 = 0, sub2 = 0, sub3 = 0;
+		System.out.println("Details of ECP_01");
+		for (Map.Entry<String, Marks> item : ECP_01.entrySet()) {
+			System.out.println("Scholar Name  :  " + item.getKey() + "\t" + item.getValue().marks1 + "\t"+ item.getValue().marks2 + "\t" + item.getValue().marks3);
+			sub1 = sub1 + item.getValue().marks1;
+			sub2 = sub2 + item.getValue().marks2;
+			sub3 = sub3 + item.getValue().marks3;
+		}
+		// Calculating average
+		int digital = sub1 / 3;
+		int networking = sub2 / 3;
+		int java = sub3 / 3;
+		System.out.println("Average of ECP_01");
+		System.out.println("Digital_Logic  :  " + digital);
+		System.out.println("Networking  :  " + networking);
+		System.out.println("Java  :  " + java);
+		int sub11 = 0, sub21 = 0, sub31 = 0;
+		System.out.println("Details of ECP_02");
+		for (Map.Entry<String, Marks> dp : ECP_02.entrySet()) {
+			System.out.println("Scholar Name  :  " + dp.getKey() + "\t" + dp.getValue().marks1 + "\t"+ dp.getValue().marks2 + "\t" + dp.getValue().marks3);
+			sub11 = sub11 + dp.getValue().marks1;
+			sub21 = sub21 + dp.getValue().marks2;
+			sub31 = sub31 + dp.getValue().marks3;
+		}
+		int digital1 = sub11 / 3;
+		int networking2 = sub21 / 3;
+		int java3 = sub31 / 3;
+		System.out.println("Average of ECP_02");
+		System.out.println("Digital_Logic  :  " + digital1 + "\nNetworking : " + networking2 + "\nJava : " + java3);
+		System.out.println("Netwoeking  :  " + networking);
+		System.out.println("Java  :  " + java);  
+		in.close();  //Scanne class closing
+	}
+}
+
+class Marks {
+	String sub1Name, sub2Name, sub3Name;
+	int marks1, marks2, marks3;
+	// creating constructor with fields
+	public Marks(String sub1Name, String sub2Name, String sub3Name, int marks1, int marks2, int marks3) {
+		super();
+		this.sub1Name = sub1Name;
+		this.sub2Name = sub2Name;
+		this.sub3Name = sub3Name;
+		this.marks1 = marks1;
+		this.marks2 = marks2;
+		this.marks3 = marks3;
+	}
+
+	// creating getters and setters methods
+	public String getSub1Name() {
+		return sub1Name;
+	}
+
+	public String getSub2Name() {
+		return sub2Name;
+	}
+
+	public String getSub3Name() {
+		return sub3Name;
+	}public int getMarks1() {
+		return marks1;
+	}
+
+	public int getMarks2() {
+		return marks2;
+	}
+	public int getMarks3() {
+		return marks3;
+	}
+	}
+Output:
+  
+
+
+
+
+2.  WAP in Java to how to compare two array values and   and display :
+1. Common values
+2. Distinct Values.
+1.Common values
+Program:
+import java.util.Scanner;
+public class CommonValues 
+{
+	public static void main(String[] args) 
+	{
+		Scanner in = new Scanner(System.in);  // Scanner Class
+		// Taking Inputs from the console
+		System.out.print("Enter Size of Array 1  :  ");
+		int arr1size = in.nextInt();
+		System.out.print("Enter Size of Array 2  :  ");
+		int arr2size = in.nextInt();
+		// creating arrays and declaring array size
+		int arr1[] = new int[arr1size];
+		int arr2[] = new int[arr2size];
+		System.out.println("Enter Elements in Array 1  :  ");
+		// Taking elements in array 1
+		for (int i = 0; i < arr1size; i++)
+		{
+			arr1[i] = in.nextInt();
+		}
+		System.out.println("Enter Elements in Array 2:");
+		// Taking elements in array 2
+		for (int i = 0; i < arr2size; i++)
+		{
+			arr2[i] = in.nextInt();
+		}
+		int count=0;
+		// checking both arrays elements 
+		for (int i = 0; i < arr1.length; i++) 
+		{
+			for (int j = 0; j < arr2.length; j++) 
+			{
+				if (arr1[i] == arr2[j]) 
+				{
+					System.out.println(arr1[i]+" is Common Element in Both Arrays");
+					count++;
+				}
+			}
+		}
+		// if no common elements found in arrays
+		if(count==0)
+		{
+			System.out.println("No Common Element Found!");
+		}
+		in.close();  // Scanner class closing
+	}
+}
+
+
+
+
+
+Output:
+ 
+ 
+	2. Distinct Values.
+	Program:
+import java.util.Scanner;
+public class DistinctValues {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);  // Scanner class
+		// takes input from console
+		System.out.print("Enter Size of Array 1  :  ");
+		int arr1size = in.nextInt();
+		System.out.print("Enter Size of Array 2  :  ");
+		int arr2size = in.nextInt();
+		int arr1[] = new int[arr1size];
+		int arr2[] = new int[arr2size];
+		System.out.println("Enter Elements in Array 1  :  ");
+		// Takes elements of first array
+		for (int i = 0; i < arr1size; i++)
+			arr1[i] = in.nextInt();
+		System.out.println("Enter Elements in array 2  :  ");
+		// takes elements of second  array
+		for (int i = 0; i < arr2size; i++)
+			arr2[i] = in.nextInt();
+		boolean isfound = false;
+		int count=0;
+		// checking distinct elements in 1st array
+		for (int i = 0; i < arr1.length; i++) {
+			isfound = false;
+			for (int j = 0; j < arr2.length; j++) {
+				if (arr1[i] == arr2[j]) {
+					isfound = true;
+				}
+			}
+			// printing the distinct element in 1st array
+			if (!isfound) {
+				System.out.println(arr1[i]+" is Distinct Element in Array 1");
+				count++;
+			}
+		}
+		// checking distinct elements in 2nd array
+		for (int i = 0; i < arr2.length; i++) {
+			isfound = false;
+			for (int j = 0; j < arr1.length; j++) {
+				if (arr2[i] == arr1[j]) {
+					isfound = true;
+				}
+			}
+			// printing the distinct element in 2st array
+			if (!isfound) {
+				System.out.println(arr2[i]+" is Distinct Element in Array 2");
+			}
+		}
+		// if no distinct elements found
+		if(count==0)
+		{
+			System.out.println("No Distinct Element Found!");
+		}
+		in.close();  // Scanner class closing
+	}
+}
+Output:
+ 
+ 
+3. Write a Java method to check whether a string is a valid password. 
+           Password rules:
+           A password must have at least ten characters.
+           A password consists of only letters and digits.
+           A password must contain at least two digits.
+Program:
+import java.util.Scanner;
+public class Password {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		// declaring the variables
+		int count = 0;
+		int flag=0;
+		int temp = 0;
+		//Taking password from console
+		System.out.println("Enter password");
+		String pass = in.next();
+		
+		if ( pass.length() < 10) {
+			// if length of password is less than 10 then print invalid and exit
+			System.out.println("Invalid password give atleast 10 charecters");
+			System.exit(0);
+		}
+		for (int i = 0; i <  pass.length(); i++) { // for password is with in a to z and 0 to 9
+			if ((pass.charAt(i) >= 'a' && pass.charAt(i) >= 'z') || (pass.charAt(i) >= 'A' && pass.charAt(i) >= 'Z')
+					|| (pass.charAt(i) >= '0' && pass.charAt(i) <= '9')) {
+				flag = 1;
+			} else {
+				temp = 2;
+			}
+		}
+		//if ther is any special symbols are found
+		if (temp == 2) {
+			System.out.println("Invalid password of Special symbol found");
+			System.exit(0);
+		}
+		for (int i = 0; i <  pass.length(); i++) {
+			if (pass.charAt(i) == '0' || pass.charAt(i) == '1' || pass.charAt(i) == '2' || pass.charAt(i) == '3'
+					|| pass.charAt(i) == '4' || pass.charAt(i) == '5' || pass.charAt(i) == '6' || pass.charAt(i) == '7'
+					|| pass.charAt(i) == '8' || pass.charAt(i) == '9') {
+				count++;
+			}
+		}
+		if (count < 2) {
+			System.out.println("Invalid password give atleast 2 digits");
+			System.exit(0);
+		}
+		if ( pass.length() >= 10 && count >= 2 && temp != 2) {
+			System.out.println("valid password");
+		}
+		in.close();	 //Scanner close
+	}
+}
+Output:
+   
+
+
+
+
+4. Write a Java method to display the middle character of a string. 
+1.        Note: 
+ a) If the length of the string is odd there will be two middle characters.
+ b) If the length of the string is even there will be one middle character.
+ Test Data:
+ Input a string : 350 
+ Expected Output: The middle character in the st
+Program:
+import java.util.Scanner;
+public class MiddleString {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);// Scanner class
+		System.out.println("Enter String");
+		String str = in.next();
+		// if length is even
+		if (str.length() % 2 == 0) {
+			int mid = str.length() / 2;
+
+			System.out.println(str.charAt(mid - 1) + "" + str.charAt(mid));
+		} else {
+			// if length is odd
+			int mid = str.length() / 2;
+			System.out.println(str.charAt(mid));
+		}
+		in.close(); // Scanmner class close
+	}
+}
+
+
+Output:
+  
+5. Write a java program to read a string and print whether the string is palindrome or not.
+Program:
+import java.util.Scanner;
+public class Palindrome {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		String rev="";
+		System.out.println("Enter the string");
+		// taking string from console
+		String str = in.next();
+		//reverse of the given string
+		for (int i = str.length() - 1; i >= 0; i--) {
+			rev = rev + str.charAt(i);
+		}
+		// checking condition whether original string is equal to reverse or not
+		if (str.equals(rev)) {
+			System.out.println("palindrome");
+		} else {
+			System.out.println("Not a palindrome");
+		}
+		in.close();
+	}
+}
+Output:
+  
+6. Write a program which accepts days as integer and display total number of years, months and days in it.
+           Assume 1 Year = 365 Days
+Program:
+import java.util.Scanner;
+public class Year {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.print("Number of days  :  ");
+		int days=in.nextInt(); // Taking number of days
+		int year=days/365;  //dividing number of days to years
+		int month=(days%365)/30;
+		int week=(days%365)/7;  // dividing to weeks
+		int rem_days=((days%365)%7);  // calculating remaining days 
+		System.out.println("Number of Years  :  "+year);
+		System.out.println("Number of Years  :  "+month);
+		System.out.println("Number of Weeks  :  "+week);
+		System.out.println("Number of days   :  " +rem_days);
+		in.close();
+	}
+}
+Output:
+ 7. In a company an employee is paid as under:
+ 
+           If his basic salary is less than Rs. 1500, then HRA = 10% of basic salary and DA = 90%                 of basic salary. 
+ 
+If his salary is either equal to or above Rs. 1500, then HRA = Rs. 500 and DA =98% of basic salary. 
+ 
+If the employee's salary is taken from user write a program to find his gross salary.
+Program:
+import java.util.Scanner;
+public class Employee {
+	public static void main(String[] args) {
+		float basic_sal, hra, da, gross_sal;
+		Scanner in = new Scanner(System.in);  // Scanner class
+		System.out.println("Enter the basic salary");
+		basic_sal = in.nextFloat();
+		// if user input is lessthan 1500
+		if (basic_sal < 1500) {
+			// hra is 10% of basic salary
+			hra = (float) (0.1 * basic_sal);
+			// hra is 90% of basic salary
+			da = (float) (0.9 * basic_sal);
+			gross_sal = basic_sal + hra + da;
+			System.out.println("Gross salary is:" + gross_sal);
+		}
+		if (basic_sal >= 1500) {
+			hra = 500;
+			// hra is 98% of basic salary
+			da = (float) (0.98 * basic_sal);
+			gross_sal = basic_sal + hra + da;
+			System.out.println("Gross salary is:" + gross_sal);
+		}
+		in.close();  // Closing Scanner class
+	}
+}
+Output:
+  
+8.  Write a Java Program to find smallest of an int array. The array is of size 10 and values should be taken from user.
+Program:
+import java.util.Scanner;
+public class SmallestElement {
+	public static void main(String[] args) {
+		// creating an array
+		int[] arr = new int[10];
+		Scanner in = new Scanner(System.in);  //Scanner class
+		System.out.println("Enter the elements into array");
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = in.nextInt();
+		}
+		// initializing the small element with arr[0]
+		int small = arr[0];
+		for (int i = 0; i < arr.length; i++) {
+			// if the element in small > arr[i] compiler goes to loop
+			if (small > arr[i]) {
+				// Stores the element in arr[i] to small
+				small = arr[i];
+			}
+		}
+		// printing the small element in an array
+		System.out.println("Smallest element in given array is:" + small);
+		in.close();  //Closing Scanner class
+	}
+}
+Output:
+ 
+9. Write a Java program to accept 10 Strings in an array. And for each string print length and reverse string.
+ 
+ Hint : use String method and StringBuffer class
+Program:
+import java.util.Scanner;
+public class ReverseString {
+	public static void main(String[] args) {
+		String str[] = new String[3];
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter the elements into string");
+		for (int i = 0; i < str.length; i++) {
+			str[i] = in.next();
+		}
+		for (int i = 0; i < str.length; i++) {
+			String rev = "";
+			// reversing the strings in an array
+			for (int i1 = str[i].length() - 1; i1 >= 0; i1--) {
+				rev = rev + str[i].charAt(i1);
+			}
+			// printing the reverse of a string and its length
+			System.out.println("reverse of " + str[i] + " is " + rev + " and length is " + str[i].length());
+		}
+		in.close();
+	}
+}
+Output:
+ 
+
+
+
+10. Write a Program to Find the absolute maximum value of a given array of int Numbers.
+ 
+            Hint : Absolute value is without sign(+ or -)
+Program:
+import java.util.Scanner;
+public class AbsoluteMaximum {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.println("Ente the size of array");
+		int size = in.nextInt();
+		// creating an array 
+		int[] arr = new int[size];
+		// creating another array
+		int[] arr1 = new int[size];
+		System.out.println("Enter the elements into array");
+		for (int i = 0; i < size; i++) {
+			arr[i] = in.nextInt();
+		}
+		// storing elements of arr into arr1 using
+		for (int i = 0; i < arr.length; i++) {
+			arr1[i] = Math.abs(arr[i]);
+		}
+		// intializing max with 0 index of an array
+		int max = arr1[0];
+		// checking condition for max elementin an array
+		for (int i = 0; i < size; i++) {
+			if (max < (arr1[i])) {
+				max = arr1[i];
+			}
+		}
+		// printing max element
+		System.out.println("Maximum element is:" + max);
+		in.close();
+	}
+}
+Output:
+ 
+
+11. WAP in Java to print below pattern: \
+                              *
+                             ***
+                            *****
+                          *******
+                        ********* 
+1.       Note: No of rows should be accepted from user.
+Program:
+import java.util.Scanner;
+public class Pattern {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);  // Scanner class
+		System.out.println("Enter size of the pattern");
+		int size=in.nextInt();  // Takes size of the pattern
+		System.out.println();
+		for(int i=1;i<=size;i++)  // for number of rows
+		{
+			for(int k=size;k>=i;k--)
+			{
+				System.out.print(" ");  // for loop for printing spaces
+			}
+			for(int j=1;j<=2*i-1;j++)  // for number of columns
+			{
+				System.out.print("*");
+			}
+			System.out.println();  // prints next line
+		}
+		in.close();  // closing scanner class
+	}
+}
+Output:
+ 
